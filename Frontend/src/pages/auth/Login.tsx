@@ -29,7 +29,7 @@ export default function Login() {
       setLoading(false);
     }
   };
-   return (
+  return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100">
       <div className="w-full max-w-6xl bg-white rounded-xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
 
@@ -60,9 +60,9 @@ export default function Login() {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-                 value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
 
@@ -75,15 +75,15 @@ export default function Login() {
                 type="password"
                 placeholder="Enter your password"
                 className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
-                 value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
 
             {/* Login Button */}
             <button className="w-full bg-indigo-700 text-white py-3 rounded-md font-semibold hover:bg-indigo-800 transition duration-300" onClick={handleSubmit}>
-               {loading ? "Logging in..." : "Login"}
+              {loading ? "Logging in..." : "Login"}
             </button>
 
           </div>
