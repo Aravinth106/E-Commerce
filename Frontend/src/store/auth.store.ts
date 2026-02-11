@@ -8,6 +8,10 @@ interface AuthState {
   login: (token: string) => void;
   logout: () => void;
 }
+interface JwtPayload {
+  sub: string;
+  "http://schemas.microsoft.com/ws/2008/06/identity/claims/role": string;
+}
 
 export const useAuthStore = create<AuthState>((set) => ({
   token: localStorage.getItem("token"),
@@ -15,8 +19,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   userId: localStorage.getItem("userId"),
 
   login: (token) => {
-    const decoded: any = jwtDecode(token);
-
+    const decoded = jwtDecode<JwtPayload>(token);
     const role =
       decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
 
@@ -25,6 +28,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     localStorage.setItem("userId", decoded.sub);
 
     set({ token, role, userId: decoded.sub });
+    console.log(role)
+
   },
 
   logout: () => {

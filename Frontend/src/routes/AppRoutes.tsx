@@ -4,25 +4,47 @@ import ProtectedRoute from "./ProtectedRoute";
 import Orders from "../pages/Order/Orders";
 import OrderDetails from "../pages/Order/OrderDetails";
 import CreateOrder from "../pages/Order/CreateOrder";
-import AppLayout from "../AppLayout";
+import Catalog from "../pages/Catalog";
+import AdminLayout from "../layouts/Adminlayouts";
+import Categories from "../pages/Admin/Categories";
+import UserLayout from "../layouts/UserLayout";
 
 export default function AppRoutes() {
-  return (
+return (
     <Routes>
+
       {/* Public */}
       <Route path="/login" element={<Login />} />
 
-      {/* Protected layout */}
-      <Route element={<AppLayout />}>
-        <Route path="/orders" element={<ProtectedRoute> <Orders /> </ProtectedRoute>}/>
-
-        <Route path="/orders/:orderId" element={<ProtectedRoute><OrderDetails /></ProtectedRoute> }/>
-
-        <Route path="/orders/create" element={<ProtectedRoute><CreateOrder /></ProtectedRoute>} />
+      {/* USER ROUTES */}
+      <Route
+        element={
+          <ProtectedRoute requiredRoles={["User"]}>
+            <UserLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/orders/:orderId" element={<OrderDetails />} />
+        <Route path="/orders/create" element={<CreateOrder />} />
+        <Route path="/catalog" element={<Catalog />} />
       </Route>
 
-      {/* Redirect root */}
+      {/* ADMIN ROUTES */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute requiredRoles={["Admin"]}>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="categories" element={<Categories />} />
+        {/* <Route path="products" element={<Products />} /> */}
+      </Route>
+
       <Route path="/" element={<Login />} />
+
     </Routes>
   );
 }
