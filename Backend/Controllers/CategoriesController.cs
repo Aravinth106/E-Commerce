@@ -60,7 +60,16 @@ namespace ReactApi.Controllers
             var result = await _service.GetProductsByChildCategoryAsync(childCategoryId);
             return Ok(result);
         }
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteCategory(Guid id)
+        {
+            var result = await _service.DeleteCategoryAsync(id);
 
+            if (!result)
+                return NotFound(new { message = "Category not found" });
+
+            return NoContent(); // 204
+        }
     }
 
 }

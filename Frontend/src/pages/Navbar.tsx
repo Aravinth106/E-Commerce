@@ -47,8 +47,8 @@ const isActive = (path: string) => location.pathname === path;
       {/* Right: User Actions */}
       <div className="flex items-center gap-4 border-l border-slate-100 pl-6">
         <div className="flex-col items-end mr-2 hidden sm:flex">
-          <span className="text-xs font-bold text-slate-900 leading-none">Admin User</span>
-          <span className="text-[10px] text-slate-400 font-medium mt-1">Store Manager</span>
+          <span className="text-xs font-bold text-slate-900 leading-none">Aravinth</span>
+          <span className="text-[10px] text-slate-400 font-medium mt-1">Customer</span>
         </div>
         
         <button

@@ -22,7 +22,14 @@ export default function Login() {
       // res.token expected
       loginStore(res.token);
 
-      navigate("/orders");
+      const role = localStorage.getItem("role");
+
+      if (role === "Admin") {
+        navigate("/admin/categories", { replace: true });
+      } else {
+        navigate("/orders", { replace: true });
+      }
+
     } catch (err) {
       alert("Invalid email or password");
     } finally {

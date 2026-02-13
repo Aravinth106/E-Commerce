@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../store/auth.store";
 import type { JSX } from "react";
 
@@ -15,17 +15,12 @@ interface Props {
 
 const ProtectedRoute = ({ children, requiredRoles }: Props) => {
   const { token, role } = useAuthStore();
-  const navigate = useNavigate();
 
   // Not logged in
   if (!token) {
     return <Navigate to="/login" replace />;
   }
-  if (role === "Admin") {
-    navigate("/admin/categories");
-  } else {
-    navigate("/orders");
-  }
+
 
   // Role restriction exists
   if (requiredRoles && !requiredRoles.includes(role ?? "")) {

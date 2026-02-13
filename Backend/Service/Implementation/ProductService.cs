@@ -121,6 +121,52 @@ namespace ReactApi.Service.Implementation
                 .ToListAsync();
         }
 
+        public async Task<PagedResult<ProductAdminResponse>> GetAdminPagedAsync(
+            string? search,
+            Guid? categoryId,
+            bool? isActive,
+            int page,
+            int pageSize)
+        {
+            var query = _context.products
+                .Include(p => p.category)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+                query = query.Where(p => p.name.Contains(search));
+
+            if (categoryId.HasValue)
+                query = query.Where(p => p.category_id == categoryId);
+
+            if (isActive.HasValue)
+                query = query.Where(p => p.is_active == isActive);
+
+            var totalCount = await query.CountAsync();
+
+            var items = await query
+                .OrderBy(p => p.name)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(p => new ProductAdminResponse(
+                    p.id,
+                    p.name,
+                    p.description,
+                    p.price,
+                    p.stock_quantity,
+                    p.category.name,
+                    p.is_active ?? false
+                ))
+                .AsNoTracking()
+                .ToListAsync();
+
+            return new PagedResult<ProductAdminResponse>(
+                items,
+                totalCount,
+                page,
+                pageSize
+            );
+        }
+
 
     }
 
