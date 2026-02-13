@@ -54,7 +54,7 @@ export const updateCategory = async (
   id: string,
   payload: UpdateCategoryRequest
 ): Promise<Category> => {
-  const res = await api.put(`/admin/categories/${id}`, payload);
+  const res = await api.put(`/categories/update/${id}`, payload);
   return res.data;
 };
 

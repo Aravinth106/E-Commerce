@@ -9,6 +9,8 @@ namespace ReactApi.Service.Interface
         Task<List<CategoryDropdownDto>> GetParentCategoriesAsync();
         Task<List<CategoryDropdownDto>> GetChildCategoriesAsync(Guid parentId);
         Task<List<ProductDropdownDto>> GetProductsByChildCategoryAsync(Guid childCategoryId);
+        Task<CategoryDropdownDto?> UpdateCategoryAsync(Guid id, UpdateCategoryRequest request);
+
         Task<bool> DeleteCategoryAsync(Guid id);
 
     }

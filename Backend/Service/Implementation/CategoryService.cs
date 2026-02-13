@@ -112,6 +112,26 @@ namespace ReactApi.Service.Implementation
                 .ToListAsync();
         }
 
+        public async Task<CategoryDropdownDto?> UpdateCategoryAsync(Guid id, UpdateCategoryRequest request)
+        {
+            var category = await _context.categories
+                .FirstOrDefaultAsync(c => c.id == id);
+
+            if (category == null)
+                return null;
+
+            category.name = request.Name.Trim();
+
+            await _context.SaveChangesAsync();
+
+            return new CategoryDropdownDto
+            {
+                Id = category.id,
+                Name = category.name
+            };
+        }
+
+
         public async Task<bool> DeleteCategoryAsync(Guid id)
         {
             var category = await _context.categories
