@@ -10,6 +10,11 @@ namespace ReactApi.Service.Interface
         Task UpdateAsync(Guid id, UpdateProductRequest request);
         Task DeleteAsync(Guid id);
         Task<List<ProductResponse>> GetPagedAsync(int page, int pageSize);
-
-    }
+        Task<PagedResult<ProductAdminResponse>> GetAdminPagedAsync(
+            string? search,
+            Guid? categoryId,
+            bool? isActive,
+            int page,
+            int pageSize);
+            }
 }

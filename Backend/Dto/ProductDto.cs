@@ -24,5 +24,21 @@
         bool IsActive
     );
 
+    public record PagedResult<T>(
+        List<T> Items,
+        int TotalCount,
+        int Page,
+        int PageSize
+    );
+    public record ProductAdminResponse(
+        Guid Id,
+        string Name,
+        string Description,
+        decimal Price,
+        int StockQuantity,
+        string CategoryName,
+        bool IsActive
+    );
+
 
 }

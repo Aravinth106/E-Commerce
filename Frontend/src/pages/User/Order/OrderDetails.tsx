@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getOrderById } from "../../services/orderService";
-import type { Order } from "../../types/order.types";
+import { getOrderById } from "../../../services/orderService";
+import type { Order } from "../../../types/order.types";
 import { ArrowLeft, Printer, Download, Package, Tag, Hash, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 

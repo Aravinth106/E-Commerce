@@ -111,6 +111,21 @@ namespace ReactApi.Service.Implementation
                 })
                 .ToListAsync();
         }
+
+        public async Task<bool> DeleteCategoryAsync(Guid id)
+        {
+            var category = await _context.categories
+                .FirstOrDefaultAsync(c => c.id == id);
+
+            if (category == null)
+                return false;
+
+            _context.categories.Remove(category);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
     }
 
 }

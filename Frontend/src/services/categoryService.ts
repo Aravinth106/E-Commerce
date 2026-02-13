@@ -1,5 +1,5 @@
 import type { UpdateCategoryRequest } from "../types/Category.types";
-import type {  Product } from "../types/order.types";
+import type {  Product } from "../types/Product.types";
 import type { Category } from "../types/Category.types";
 import api from "../utils/axios";
 
@@ -60,5 +60,5 @@ export const updateCategory = async (
 
 // Delete category
 export const deleteCategory = async (id: string): Promise<void> => {
-  await api.delete(`/admin/categories/${id}`);
+  await api.delete(`/categories/${id}`);
 };

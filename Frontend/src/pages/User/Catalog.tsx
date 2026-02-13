@@ -3,11 +3,12 @@ import {
     getAllCategories,
     getAllProducts,
     getProductsByCategory,
-} from "../services/categoryService";
-import type { Category, Product } from "../types/order.types";
+} from "../../services/categoryService";
+import type { Product } from "../../types/Product.types";
 import { RotateCcw, ShoppingCart, Trash2, Plus } from "lucide-react"; // Optional: lucide-react for icons
-import { createOrder } from "../services/orderService";
-import { useAuthStore } from "../store/auth.store";
+import { createOrder } from "../../services/orderService";
+import { useAuthStore } from "../../store/auth.store";
+import type { Category } from "../../types/Category.types";
 
 interface CartItem extends Product {
     quantity: number;

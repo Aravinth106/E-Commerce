@@ -13,16 +13,12 @@ export interface Order {
   items: OrderItem[];
 }
 
-// export interface Category {
+// export interface Product {
 //   id: string;
 //   name: string;
-//   parentId: string ;
+//   quantity: number;
+//   price: number;
+//   categoryId: string;
 // }
 
-export interface Product {
-  id: string;
-  name: string;
-  quantity: number;
-  price: number;
-  categoryId: string;
-}
+

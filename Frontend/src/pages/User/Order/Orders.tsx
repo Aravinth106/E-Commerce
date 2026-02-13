@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getMyOrders, cancelOrder} from "../../services/orderService";
-import type { Order } from "../../types/order.types";
+import { getMyOrders, cancelOrder} from "../../../services/orderService";
+import type { Order } from "../../../types/order.types";
 import { Search, ChevronDown, ListFilter, Calendar, Clock, Eye, Plus, XCircle } from "lucide-react"; 
 import { useNavigate } from "react-router-dom";
 
