@@ -1,25 +1,23 @@
 ﻿namespace ReactApi.Dto
 {
-   public record CreateCategoryRequest(
-    string Name,
-    Guid? ParentId
-);
+    public record CreateCategoryRequest(
+        string Name,
+        Guid? ParentId
+    );
 
-public record CategoryResponse(
-    Guid Id,
-    string Name,
-    Guid? ParentId
-);
-    public class CategoryDropdownDto
+    public record CategoryResponse(
+        Guid Id,
+        string Name,
+        Guid? ParentId
+    );
+    public record CategoryDropdownDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = null!;
     }
-    public class ProductDropdownDto
+    public record UpdateCategoryRequest
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; } = null!;
-        public decimal Price { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 
 }

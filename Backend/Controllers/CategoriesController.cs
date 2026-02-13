@@ -60,6 +60,21 @@ namespace ReactApi.Controllers
             var result = await _service.GetProductsByChildCategoryAsync(childCategoryId);
             return Ok(result);
         }
+
+        [HttpPut("update/{id:guid}")]
+        public async Task<IActionResult> UpdateCategory(Guid id, UpdateCategoryRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var updatedCategory = await _service.UpdateCategoryAsync(id, request);
+
+            if (updatedCategory == null)
+                return NotFound(new { message = "Category not found" });
+
+            return Ok(updatedCategory);
+        }
+
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteCategory(Guid id)
         {

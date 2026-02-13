@@ -23,6 +23,12 @@
         int StockQuantity,
         bool IsActive
     );
+    public class ProductDropdownDto
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = null!;
+        public decimal Price { get; set; }
+    }
 
     public record PagedResult<T>(
         List<T> Items,
